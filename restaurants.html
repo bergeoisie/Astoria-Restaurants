@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta title='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <script src='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.css' rel='stylesheet' />
+  <link rel="stylesheet" href="rest.css" type="text/css" />
+  <!--[if lte IE 8]>
+    <link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<script src='http://dragdealer.googlecode.com/svn/tags/0.9.5/dragdealer.js'></script>
+
+<div id="container">
+<div id="header">
+  
+       
+                 
+<div id="logo">
+            <a href="http://www.henningsberg.com/"><img src="http://www.henningsberg.com/blog/wp-content/uploads/2013/02/copy-waves-logo.jpg" width="313" height="100" alt="The Henningsgaard-Berg Wedding" /></a>
+        </div><!-- end of #logo -->
+        
+    
+        
+                  
+        <ul id="menu-custom-header-menu" class="menu"><li id="menu-item-813" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-813"><a href="http://www.henningsberg.com/">Home</a></li>
+<li id="menu-item-815" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-815"><a href="http://www.henningsberg.com/the-cast/">Cast &#038; Crew</a>
+<ul class="sub-menu">
+  <li id="menu-item-866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-866"><a href="http://www.henningsberg.com/the-cast/our-story/">Anna &#038; Brendan</a></li>
+  <li id="menu-item-865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-865"><a href="http://www.henningsberg.com/the-cast/the-girls/">The Girls</a></li>
+  <li id="menu-item-864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-864"><a href="http://www.henningsberg.com/the-cast/the-boys/">The Boys</a></li>
+</ul>
+</li>
+<li id="menu-item-816" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-816"><a href="http://www.henningsberg.com/events/">Events</a>
+<ul class="sub-menu">
+  <li id="menu-item-887" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-887"><a href="http://www.henningsberg.com/travel/wedding-week-activities/">Activities</a></li>
+  <li id="menu-item-1026" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1026"><a href="http://www.henningsberg.com/events/schedule/">Schedule</a></li>
+  <li id="menu-item-886" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-886"><a href="http://www.henningsberg.com/events/saturday-july-27th/">July 27th</a></li>
+</ul>
+</li>
+<li id="menu-item-817" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-817"><a href="http://www.henningsberg.com/travel/">Travel</a>
+<ul class="sub-menu">
+  <li id="menu-item-840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-840"><a href="http://www.henningsberg.com/travel/getting-to-astoria/">Getting to Astoria</a></li>
+  <li id="menu-item-829" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-829"><a href="http://www.henningsberg.com/travel/hotels/">Hotels</a></li>
+</ul>
+</li>
+<li id="menu-item-818" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-818"><a href="http://www.henningsberg.com/registry/">Registry</a>
+<ul class="sub-menu">
+  <li id="menu-item-889" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-889"><a href="http://www1.macys.com/registry/wedding/guest/?registryId=205027">Macy&#8217;s</a></li>
+  <li id="menu-item-888" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-888"><a href="http://www.amazon.com/registry/wedding/1IAV6977G4RK9">Amazon.com</a></li>
+  <li id="menu-item-890" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-890"><a href="http://www.williams-sonoma.com/registry/3183271/registry-list.html">Williams-Sonoma</a></li>
+  <li id="menu-item-1091" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1091"><a href="http://riverseagallery.squarespace.com/henningsgaard-berg-wedding">Riversea Art Gallery</a></li>
+</ul>
+</li>
+<li id="menu-item-1093" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1093"><a href="http://www.henningsberg.com/news/">Blog</a></li>
+<li id="menu-item-1107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1107"><a href="http://www.henningsberg.com/next-steps/">How to RSVP</a></li>
+</ul>                
+             
+    </div><!-- end of #header -->
+
+
+<div id='wrapper'> 
+<div id='map-ui'>
+    <ul>
+        <li><a href='#' class='active' id='filter-all'>All</a></li>
+        <li><a href='#' id='filter-dine'>Dining</a></li>
+        <li><a href='#' id='filter-bar'>Bar</a></li>
+        <li><a href='#' id='filter-barmenu'>Bar Menu</a></li>
+        <li><a href='#' id='filter-brewpub'>Brewpub</a></li>
+        <li><a href='#' id='filter-seafood'>Seafood</a></li>
+    </ul>
+       <ul>
+        <li><a href='#' class='active' id='filterStar-all'>All</a></li>
+        <li><a href='#' id='filterStar-one'>*</a></li>
+        <li><a href='#' id='filterStar-two'>**</a></li>
+        <li><a href='#' id='filterStar-three'>***</a></li>
+        <li><a href='#' id='filterStar-four'>****</a></li>
+    </ul>
+
+</div>
+<div id='z'>
+    <div id='zoom-bar' class='dragdealer'>
+        <div id='handle' class="handle">0</div>
+    </div>
+</div>
+<div id='map'></div>
+<div class="map-attribution map-mm"></div>
+</div> <!-- wrapper --> 
+</div> <!-- container -->
+<script>
+var map = L.mapbox.map('map', 'bergeoisie.OSMBrightBad');
+var zooms = 17;
+
+var featurecoll = [
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.828404","46.189023"]},
+                      "properties":{"title":"14th Street Coffee","marker-symbol": "cafe","address":"1410 Commercial St","rating":"2","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Stumptown Coffee - paninis and pastries"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.825008","46.189186"]},
+                    "properties":{"title":"Astoria Coffee Co","marker-symbol": "cafe","address":"34th & Marine Drive","rating":"3","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Roast their own - Best Coffee in town"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831947","46.189558"]},
+                  "properties":{"title":"Astoria Coffee House","marker-symbol": "cafe","marker-symbol": "cafe","address":"243 11th St","rating":"4","dine":"1","bar":"1","barmenu":"0","seafood":"0","brewpub":"0","comments":"Perhaps best food in Astoria, breakfast lunch dinner"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.830135","46.190091"]},
+                  "properties":{"title":"Baked Alaska","marker-symbol": "restaurant","address":"1 12th St","rating":"3","dine":"1","bar":"1","barmenu":"1","seafood":"1","brewpub":"0","comments":"Great view, good food, 'other' 1/2 has brick fired casual pizza"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.827148","46.188563"]},
+                  "properties":{"title":"Blue Scorcher Bakery","marker-symbol": "cafe","address":"15th & Duane","rating":"3","dine":"1","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Excellent bread, vegetarian breakfast & lunch"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.823638","46.188717"]},
+                  "properties":{"title":"Bow Picker","address":"1650 Duane","rating":"2","dine":"1","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Outside dining, very popular, Tuna Fish & Chips only menu item"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.85231","46.188997"]},
+                  "properties":{"title":"Bridgewater Bistro","marker-symbol": "restaurant","address":"20 Basin St","rating":"4","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"0","comments":"Very good food, location, decor & service"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.830173","46.189024"]},
+                  "properties":{"title":"Clemente's","marker-symbol": "restaurant","address":"12th & Commercial","rating":"3","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"0","comments":"Nice décor, local seafood, quite bar, food/service usually good"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.797652","46.197061"]},
+                  "properties":{"title":"Coffee Girl","marker-symbol": "cafe","address":"Pier 38","rating":"3","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Nice Breakfast spot, located in former cannery coffee room, on river"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831408","46.189732"]},
+                  "properties":{"title":"Columbia Cafe","marker-symbol": "restaurant","address":"1114 Marine Dr","rating":"3","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"0","comments":"Very quirky, all local, can be excellent"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.849118","46.189053"]},
+                  "properties":{"title":"Columbia River Coffee","marker-symbol": "cafe","address":"279 W Marine","rating":"2","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Coffee shop under the Bridge - sandwiches/pastries too"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831194","46.189054"]},
+                  "properties":{"title":"Danish Maid Bakery","address":"1132 Commercial","rating":"1","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Old Fashion Bakery - think maple bars"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.900106","46.162136"]},
+                  "properties":{"title":"Doogers","marker-symbol": "restaurant","address":"103 Hwy 101 Warrenton","rating":"3","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"0","comments":"Very local, very  seafood, nice clean restaurant dining"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.832718","46.188818"]},
+                  "properties":{"title":"Downtown Coffee Shop","marker-symbol": "cafe","address":"332 10th Street","rating":"2","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Great coffe shop, breakfast, sandwiches  &  good cookies"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.833317","46.189058"]},"properties":{"title":"Drina Daisy","marker-symbol": "restaurant","address":"915 Commercial St","rating":"2","dine":"1","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Bosnian Food - popular with some, not with me"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.827596","46.188525"]},"properties":{"title":"Fort George","marker-symbol": "beer","address":"1483 Duane St","rating":"3","dine":"1","bar":"0","barmenu":"0","seafood":"1","brewpub":"1","comments":"Great Beer, very busy, pretty good bar food"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.830962","46.18905"]},"properties":{"title":"Fulio's","marker-symbol": "restaurant","address":"1149 Commercial St","rating":"3","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"0","comments":"Pasta & best steak in town, casual, consistent quality"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.836241","46.173242"]},"properties":{"title":"Fultano's","address":"7th & Olney Ave","rating":"2","dine":"1","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Local's favorite Pizza"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.812405","46.189352"]},"properties":{"title":"Home Bakery","address":"2845 Marine Dr","rating":"3","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Scandanvian Bakery Items"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831253","46.187884"]},"properties":{"title":"Northwest Wild","address":"W End Mooring Basin","rating":"3","dine":"0","bar":"0","barmenu":"0","seafood":"1","brewpub":"0","comments":"Not sure I'd eat here - best seafood market around"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.846538","46.190121"]},"properties":{"title":"Pig n Pancake","marker-symbol": "restaurant","address":"146 West Bond St","rating":"2","dine":"1","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"An Astoria original - every pancake in the world"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.833672","46.190273"]},"properties":{"title":"Rio","marker-symbol": "restaurant","address":"125 9th St","rating":"3","dine":"1","bar":"1","barmenu":"0","seafood":"0","brewpub":"0","comments":"Consistently good mexican food, not fancy, full bar next door"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.797625","46.196501"]},"properties":{"title":"Rogue Brewery","marker-symbol": "beer","address":"100 39th St","rating":"2","dine":"1","bar":"0","barmenu":"0","seafood":"1","brewpub":"1","comments":"Good Beer, pretty good bar food, breezy local"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.8408","46.191043"]},"properties":{"title":"Ship Inn","marker-symbol": "restaurant","address":"1 2nd St","rating":"2","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"0","comments":"Old favorite-English Pub style fish & chips"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831747","46.18905"]},"properties":{"title":"Silver Salmon","marker-symbol":"restaurant","address":"11th St & Commercial St","rating":"2","dine":"1","bar":"1","barmenu":"1","seafood":"1","brewpub":"0","comments":"Large menu, big plates, seafood, good bar menu"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.830166","46.1886"]},"properties":{"title":"T Paul's Supper Club","marker-symbol": "restaurant","address":"360 12th St","rating":"3","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"0","comments":"Upscale Urban Cafe"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831414","46.189057"]},"properties":{"title":"T Paul's Urban Cafe","marker-symbol": "restaurant","address":"1119 Commercial St","rating":"3","dine":"1","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"Light fare - think quesidilla's - good food"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831719","46.189725"]},"properties":{"title":"Vodoo Room","marker-symbol": "bar","address":"11th & Marine Drive","rating":"4","dine":"0","bar":"1","barmenu":"1","seafood":"0","brewpub":"0","comments":"An 'extension' of Columbia Cafe, good pizza, uber quirky bar"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.831405","46.190165"]},"properties":{"title":"Wet Dog","marker-symbol": "beer","address":"144 11th St","rating":"2","dine":"1","bar":"1","barmenu":"0","seafood":"1","brewpub":"1","comments":"1st brew pub - good beer, nice spot on warm afternoon"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.849525","46.189071"]},"properties":{"title":"Worker's Tavern","address":"281 W Marine Dr","rating":"1","dine":"1","bar":"1","barmenu":"0","seafood":"0","brewpub":"0","comments":"Where the 'other half' drink - great prime rib"}},
+                  {"type":"Feature","geometry":{"type":"Point","coordinates":["-123.828807","46.187671"]},"properties":{"title":"Astoria Food Cooperative","marker-symbol": "grocery","address":"1355 Exchange St #1","rating":"4","dine":"0","bar":"0","barmenu":"0","seafood":"0","brewpub":"0","comments":"A mini Whole Foods. Perfect place to stock your hotel for breakfast or appetizers. Good beer selection."}}
+                  ];
+
+
+
+
+
+   var dine = document.getElementById('filter-dine');
+    var all = document.getElementById('filter-all');
+    var bar = document.getElementById('filter-bar');
+    var barmenu = document.getElementById('filter-barmenu');
+    var brewpub = document.getElementById('filter-brewpub');
+    var seafood = document.getElementById('filter-seafood');
+    var allStar = document.getElementById('filterStar-all');
+    var oneStar = document.getElementById('filterStar-one');
+    var twoStar = document.getElementById('filterStar-two');
+    var threeStar = document.getElementById('filterStar-three');
+    var fourStar = document.getElementById('filterStar-four');
+
+    var currentStar = "0";
+    var currentSelection = 'all';
+
+    dine.onclick = function(e) {
+        all.className = '';
+        bar.className = '';
+        barmenu.className = '';
+        brewpub.className = '';
+        seafood.className = '';
+        this.className = 'active';
+
+        currentSelection = 'dine';
+        // The setFilter function takes a GeoJSON feature object
+        // and returns true to show it or false to hide it.
+        map.markerLayer.setFilter(function(f) {
+          if(currentStar === "0") {
+            return f.properties[currentSelection] === '1';
+          }
+          else {
+            return f.properties[currentSelection] === '1' && f.properties['rating'] == currentStar;
+          }        
+        });
+        return false;
+    };
+
+    bar.onclick = function(e) {
+        all.className = '';
+        dine.className = '';
+        barmenu.className = '';
+        brewpub.className = '';
+        seafood.className = '';
+        this.className = 'active';
+        currentSelection = 'bar';
+        // The setFilter function takes a GeoJSON feature object
+        // and returns true to show it or false to hide it.
+        map.markerLayer.setFilter(function(f) {
+          if(currentStar === "0") {
+            return f.properties[currentSelection] === '1';
+          }
+          else {
+            return f.properties[currentSelection] === '1' && f.properties['rating'] == currentStar;
+          }
+        });
+        return false;
+    };
+
+    barmenu.onclick = function(e) {
+        all.className = '';
+        bar.className = '';
+        dine.className = '';
+        brewpub.className = '';
+        seafood.className = '';
+        all.className = '';
+        this.className = 'active';
+        currentSelection = 'barmenu'
+        // The setFilter function takes a GeoJSON feature object
+        // and returns true to show it or false to hide it.
+        map.markerLayer.setFilter(function(f) {
+          if(currentStar === "0") {
+            return f.properties[currentSelection] === '1';
+          }
+          else {
+            return f.properties[currentSelection] === '1' && f.properties['rating'] == currentStar;
+          }
+        });
+        return false;
+    };
+
+
+    brewpub.onclick = function(e) {
+        all.className = '';
+        bar.className = '';
+        barmenu.className = '';
+        dine.className = '';
+        seafood.className = '';
+        this.className = 'active';
+        currentSelection = 'brewpub';
+        // The setFilter function takes a GeoJSON feature object
+        // and returns true to show it or false to hide it.
+        map.markerLayer.setFilter(function(f) {
+          if(currentStar === "0") {
+            return f.properties[currentSelection] === '1';
+          }
+          else {
+            return f.properties[currentSelection] === '1' && f.properties['rating'] == currentStar;
+          }        });
+        return false;
+    };
+
+    seafood.onclick = function(e) {
+        all.className = '';
+        bar.className = '';
+        barmenu.className = '';
+        brewpub.className = '';
+        dine.className = '';
+        this.className = 'active';
+        currentSelection = 'seafood'
+        // The setFilter function takes a GeoJSON feature object
+        // and returns true to show it or false to hide it.
+        map.markerLayer.setFilter(function(f) {
+          if(currentStar === "0") {
+            return f.properties[currentSelection] === '1';
+          }
+          else {
+            return f.properties[currentSelection] === '1' && f.properties['rating'] == currentStar;
+          }        });
+        return false;
+    };
+
+    all.onclick = function() {
+        dine.className = '';
+        bar.className = '';
+        barmenu.className = '';
+        brewpub.className = '';
+        seafood.className = '';
+        this.className = 'active';
+        currentSelection = 'all';
+        map.markerLayer.setFilter(function(f) {
+            // Returning true for all markers shows everything.
+          if(currentStar === "0") {
+            return true;
+          }
+          else {
+            return f.properties['rating'] == currentStar;
+          }        
+        });
+        return false;
+    };
+
+    allStar.onclick = function() {
+      oneStar.className = '';
+      twoStar.className = '';
+      threeStar.className = '';
+      fourStar.className = '';
+      this.className = 'active';
+
+      currentStar = '0';
+
+      map.markerLayer.setFilter(function(f) {
+        if(currentSelection === 'all')
+        {
+          return true;
+        }
+        else {
+        return f.properties[currentSelection] === '1';
+      }
+      });
+    };
+
+    oneStar.onclick = function() {
+      allStar.className = '';
+      twoStar.className = '';
+      threeStar.className = '';
+      fourStar.className = '';
+      this.className = 'active';
+
+      currentStar = '1';
+
+      map.markerLayer.setFilter(function(f) {
+        if(currentSelection === 'all') {
+          return f.properties['rating'] === '1';
+        }
+        else {
+        return f.properties[currentSelection] === '1' && f.properties['rating'] === '1';
+      }
+      });
+    };
+
+    twoStar.onclick = function() {
+      allStar.className = '';
+      Star.className = '';
+      threeStar.className = '';
+      fourStar.className = '';
+      this.className = 'active';
+
+      currentStar = '2';
+
+      map.markerLayer.setFilter(function(f) {
+        if(currentSelection === 'all') {
+          return f.properties['rating'] === '2';
+        }
+        else {
+        return f.properties[currentSelection] === '1' && f.properties['rating'] === '2';
+      }
+      });
+    };
+
+    threeStar.onclick = function() {
+      allStar.className = '';
+      twoStar.className = '';
+      oneStar.className = '';
+      fourStar.className = '';
+      this.className = 'active';
+
+      currentStar = '3';
+
+      map.markerLayer.setFilter(function(f) {
+        if(currentSelection === 'all') {
+          return f.properties['rating'] === '3';
+        }
+        else {
+        return f.properties[currentSelection] === '1' && f.properties['rating'] === '3';
+      }
+      });
+    };
+
+    fourStar.onclick = function() {
+      allStar.className = '';
+      twoStar.className = '';
+      threeStar.className = '';
+      oneStar.className = '';
+      this.className = 'active';
+
+      currentStar = '4';
+
+      map.markerLayer.setFilter(function(f) {
+        if(currentSelection === 'all') {
+          return f.properties['rating'] === '4';
+        }
+        else {
+        return f.properties[currentSelection] === '1' && f.properties['rating'] === '4';
+      }
+      });
+    };
+
+
+
+    map.markerLayer.on('layeradd', function(e) {
+    var marker = e.layer,
+        feature = marker.feature;
+
+    // Create custom popup content
+    var popupContent =  '<h2>' + feature.properties.title + '</h2>' +
+                            '<p>' + feature.properties.address + '</p>' +
+                        '   <p> Stars: ' + feature.properties.rating + ', Comments: ' + feature.properties.comments + '</p>';
+
+    // http://leafletjs.com/reference.html#popup
+    marker.bindPopup(popupContent,{
+        closeButton: false,
+        minWidth: 320
+    });
+});
+
+// Configure Dragdealer to update the map zoom
+var zoom_bar = new Dragdealer('zoom-bar', {
+    steps: zooms,
+    snap: true,
+    callback: function (x, y) {
+        var z = x * (zooms - 1);
+        map.setZoom(z);
+        handle.innerHTML = z;
+    }
+});
+
+// Round zoom so that numbers in the bar look presentable.
+map.on('zoomend', function () {
+    var z = Math.round(map.getZoom());
+    zoom_bar.setValue(z / 16);
+    handle.innerHTML = z;
+});
+
+    map.markerLayer.setGeoJSON(featurecoll);
+
+
+
+</script>
+</body>
+</html>
